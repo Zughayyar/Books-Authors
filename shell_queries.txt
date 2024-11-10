@@ -1,7 +1,7 @@
-// Assignment: Users(Shell)
+// Assignment: Books/Authors (Shell)
 // Anas Zughayyar
 
-Github Link: 
+Github Link: https://github.com/Zughayyar/Books-Authors.git
 
 Submit your .txt file that contains all the queries you ran in the shell
 
