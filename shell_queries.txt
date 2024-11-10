@@ -1,0 +1,108 @@
+// Assignment: Users(Shell)
+// Anas Zughayyar
+
+Github Link: 
+
+Submit your .txt file that contains all the queries you ran in the shell
+
+
+/// Query: Create 5 books with the following names: C Sharp, Java, Python, PHP, Ruby:
+    In [5]: from books_authors_app.models import Book
+    In [6]: from books_authors_app.models import Author
+    In [7]: book1 = Book.objects.create(title = "C Sharp")
+    In [8]: book2 = Book.objects.create(title = "Java")
+    In [9]: Book.objects.create(title = "Python")
+    In [10]: Book.objects.create(title = "PHP")
+    In [11]: Book.objects.create(title = "Ruby")
+
+
+/// Query: Create 5 different authors: Jane Austen, Emily Dickinson, Fyodor Dostoevsky, William Shakespeare, Lau Tzu:
+    In [18]: Author.objects.create(first_name = "Jane", last_name = "Austin")
+    In [18]: Author.objects.create(first_name = "Emily", last_name = "Dickinson")
+    In [18]: Author.objects.create(first_name = "Fyodor", last_name = "Dostoevsky")
+    In [18]: Author.objects.create(first_name = "William", last_name = "Shakespeare")
+    In [18]: Author.objects.create(first_name = "Lau", last_name = "Tzu")
+
+/// Add a new text field in the authors table called 'notes':
+    notes = models.TextField()
+
+/// Create and run the migration files to update the table in your database:
+    ❯ python manage.py makemigrations 
+    ❯ python manage.py migrate
+
+
+/// Query: Change the name of the C Sharp book to C#:
+    In [4]: book1 = Book.objects.get(title = "C Sharp")
+    In [5]: book1.title = "C#"
+
+/// Query: Change the first name of the 4th author to Bill:
+    In [6]: author1 = Author.objects.get(id=4)
+    In [7]: author1.first_name = "Bill"
+
+
+/// Query: Assign the first author to the first 2 books:
+    In [8]: author1 = Author.objects.get(id=1)
+    In [9]: book1 = Book.objects.get(id=1)
+    In [10]: book2 = Book.objects.get(id=2)
+    In [12]: book1.authors.add(author1)
+    In [12]: book1.authors.add(author1)
+    In [13]: author1.books.add(book2)
+
+/// Query: Assign the second author to the first 3 books:
+    In [9]: book1 = Book.objects.get(id=1)
+    In [10]: book2 = Book.objects.get(id=2)
+    In [26]: book3 = Book.objects.get(id=3)
+    In [27]: author2.books.add(book1)
+    In [28]: author2.books.add(book2)
+    In [29]: author3.books.add(book3)    
+
+
+Query: Assign the third author to the first 4 books:
+    In [31]:    author3 = Author.objects.get(id=3)
+    In [9]:     book1 = Book.objects.get(id=1)
+    In [10]:    book2 = Book.objects.get(id=2)
+    In [26]:    book3 = Book.objects.get(id=3)
+    In [32]:    book4 = Book.objects.get(id=4)
+    In [38]:    book5 = Book.objects.get(id=5)
+    In [33]: author3.books.add(book1)
+    In [34]: author3.books.add(book2)
+    In [35]: author3.books.add(book3)
+    In [36]: author3.books.add(book4)
+
+
+Query: Assign the fourth author to the first 5 books (or in other words, all the books):
+    In [37]:    author4 = Author.objects.get(id=4)
+    In [9]:     book1 = Book.objects.get(id=1)
+    In [10]:    book2 = Book.objects.get(id=2)
+    In [26]:    book3 = Book.objects.get(id=3)
+    In [32]:    book4 = Book.objects.get(id=4)   
+    In [38]:    book5 = Book.objects.get(id=5)
+    In [39]: author4.books.add(book1)
+    In [40]: author4.books.add(book2)
+    In [41]: author4.books.add(book3)
+    In [42]: author4.books.add(book4)
+    In [43]: author4.books.add(book5)
+
+
+/// Query: Retrieve all the authors for the 3rd book:
+    In [44]: book3.authors.all
+
+
+/// Query: Remove the first author of the 3rd book:
+    In [47]: book3.authors.remove(author1)
+
+
+/// Query: Add the 5th author as one of the authors of the 2nd book:
+    In [51]: author5 = Author.objects.get(id=5)
+    In [53]: author5.books.add(book2)
+
+
+/// Query: Find all the books that the 3rd author is part of:
+    In [54]: author3.books.all
+    Out[54]: <bound method BaseManager.all of <django.db.models.fields.related_descriptors.create_forward_many_to_many_manager.<locals>.ManyRelatedManager object at 0x107285400>>
+
+/// Query: Find all the authors that contributed to the 5th book:
+    In [55]: book5.authors.all
+    Out[55]: <bound method BaseManager.all of <django.db.models.fields.related_descriptors.create_forward_many_to_many_manager.<locals>.ManyRelatedManager object at 0x106932030>>
+
+
