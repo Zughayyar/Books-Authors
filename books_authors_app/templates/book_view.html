@@ -30,6 +30,29 @@
             <li>{{ author.first_name }} {{ author.last_name }}</li>
         {% endfor %}
         </ul>
+        <hr>
+        <form action="/addAuthorToBook" method="post">
+            {% csrf_token %}
+            <select class="form-select" name="author_id">
+                <option selected>Please Select Author</option>
+                {% for author in authors %}
+                <option value="{{ author.id }}">{{ author.first_name }} {{ author.last_name }}</option>
+                {% endfor %}
+            </select>
+            <input type="hidden" value="{{ book.id }}" name="book_id">
+            <button type="submit" class="btn btn-primary">Add</button>
+        </form>
+
+        <select class="form-select" name="author_id">
+            <option selected>Please Select Author</option>
+            {% for author in authors %}
+                {% for auther_added in book.authors.all  %}
+                    {% if auther.id != auther_added.id %}
+                    <option value="{{ author.id }}">{{ author.first_name }} {{ author.last_name }}</option>
+                    {% endif %}
+                {% endfor %}
+            {% endfor %}
+        </select>
     </div>
 
     <script src="{% static 'js/bootstrap/bootstrap.js' %}" ></script>

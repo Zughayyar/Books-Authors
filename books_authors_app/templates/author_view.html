@@ -30,6 +30,18 @@
             <li>{{book.title}}</li>
         {% endfor %}
         </ul>
+        <hr>
+        <form action="/addBookToAuthor" method="post">
+            {% csrf_token %}
+            <select class="form-select" name="book_id">
+                <option selected>Open this select menu</option>
+                {% for book in books %}
+                <option value="{{ book.id }}">{{ book.title }}</option>
+                {% endfor %}
+            </select>
+            <input type="hidden" value="{{ author.id }}" name="author_id">
+            <button type="submit" class="btn btn-primary">Add</button>
+        </form>
     </div>
 
     <script src="{% static 'js/bootstrap/bootstrap.js' %}" ></script>

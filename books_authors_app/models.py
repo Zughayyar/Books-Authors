@@ -37,3 +37,13 @@ def create_author(data):
     last_name = data['last_name']
     notes = data['notes']
     Author.objects.create(first_name=first_name, last_name=last_name, notes=notes)
+
+def add_book_to_author(data):
+    this_author = Author.objects.get(id = data['author_id'])
+    this_book = Book.objects.get(id=data['book_id'])
+    this_author.books.add(this_book)
+
+def add_author_to_book(data):
+    this_book = Book.objects.get(id=data['book_id'])
+    this_author = Author.objects.get(id = data['author_id'])
+    this_book.authors.add(this_author)
