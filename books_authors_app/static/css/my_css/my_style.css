@@ -61,6 +61,14 @@ body {
     margin: auto;
     padding: 1vh;
     width: 80vh;
+    height: 60vh;
+    background-color: #f8f9fa;
+}
+
+.container-author-view {
+    margin: auto;
+    padding: 1vh;
+    width: 80vh;
     height: 50vh;
     background-color: #f8f9fa;
 }

@@ -43,13 +43,21 @@ def create_author(request):
     return redirect('/authors')
 
 def add_book_to_author(request):
-    if request.method == "POST":
-        models.add_book_to_author(request.POST)
-        id = request.POST['author_id']
-    return redirect('/author/' + id)
+    book_id = request.POST['book_id']
+    id = request.POST['author_id'] 
+    if book_id == "null":
+        return redirect('/author/' + id)
+    else:
+        if request.method == "POST":
+            models.add_book_to_author(request.POST)
+        return redirect('/author/' + id)
 
 def add_author_to_book(request):
-    if request.method == "POST":
-        models.add_author_to_book(request.POST)
-        id = request.POST['book_id']
-    return redirect('/book/' + id)
+    author_id = request.POST['author_id']
+    id = request.POST['book_id']
+    if author_id == "null":
+        return redirect('/book/' + id)
+    else:
+        if request.method == "POST":
+            models.add_author_to_book(request.POST)
+        return redirect('/book/' + id)

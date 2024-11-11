@@ -18,7 +18,7 @@
     </nav>
     <br>
     <br>
-    <div class="container-book-view">
+    <div class="container-author-view">
         <h2>{{ author.first_name  }} {{ author.last_name }}</h2>
         <p>ID: {{ author.id }} </p>
         <h5>Notes:</h5>
@@ -34,9 +34,11 @@
         <form action="/addBookToAuthor" method="post">
             {% csrf_token %}
             <select class="form-select" name="book_id">
-                <option selected>Open this select menu</option>
+                <option value="null" selected>Please Select a Book</option>
                 {% for book in books %}
-                <option value="{{ book.id }}">{{ book.title }}</option>
+                    {% if book not in author.books.all %}
+                        <option value="{{ book.id }}">{{ book.title }}</option>
+                    {% endif %}
                 {% endfor %}
             </select>
             <input type="hidden" value="{{ author.id }}" name="author_id">
