@@ -19,14 +19,16 @@
     <br>
     <br>
     <div class="container-book-view">
-        <h2>{{ author.first_name }}</h2>
+        <h2>{{ author.first_name  }} {{ author.last_name }}</h2>
         <p>ID: {{ author.id }} </p>
-        <h5>Description:</h5>
-        <p>Hellow</p>
+        <h5>Notes:</h5>
+        <p>{{ author.notes }}</p>
+        <hr>
         <ul>
-        <h5>Authors:</h5>
-            <li>one</li>
-            <li>two</li>
+        <h5>Books:</h5>
+        {% for book in author.books.all %}
+            <li>{{book.title}}</li>
+        {% endfor %}
         </ul>
     </div>
 

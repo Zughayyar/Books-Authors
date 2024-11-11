@@ -34,3 +34,6 @@ def create_book(data):
 
 def create_author(data):
     first_name = data['first_name']
+    last_name = data['last_name']
+    notes = data['notes']
+    Author.objects.create(first_name=first_name, last_name=last_name, notes=notes)

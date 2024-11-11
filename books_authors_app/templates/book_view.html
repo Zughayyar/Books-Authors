@@ -23,10 +23,12 @@
         <p>ID: {{ book.id }} </p>
         <h5>Description:</h5>
         <p>{{ book.desc }}</p>
+        <hr>
         <ul>
         <h5>Authors:</h5>
-            <li>one</li>
-            <li>two</li>
+        {% for author in book.authors.all %}
+            <li>{{ author.first_name }} {{ author.last_name }}</li>
+        {% endfor %}
         </ul>
     </div>
 
