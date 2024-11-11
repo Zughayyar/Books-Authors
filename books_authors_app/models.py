@@ -15,3 +15,22 @@ class Author(models.Model):
     updated_at = models.DateTimeField(auto_now=True)
     notes = models.TextField()
     
+def get_all_books():
+    return Book.objects.all()
+
+def get_all_authors():
+    return Author.objects.all()
+
+def get_book_by_id(id):
+    return Book.objects.get(id=id)
+
+def get_author_by_id(id):
+    return Author.objects.get(id=id)
+
+def create_book(data):
+    title = data['title']
+    desc = data['desc']
+    Book.objects.create(title=title, desc = desc)
+
+def create_author(data):
+    first_name = data['first_name']

@@ -1,0 +1,35 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Many to Many Relationships</title>
+
+    {% load static %} 
+    <link rel="stylesheet" href="{% static 'css/bootstrap/bootstrap.css' %}">
+    <link rel="stylesheet" href="{% static 'css/my_css/my_style.css' %}">
+</head>
+<body>
+    <nav class="navbar bg-body-tertiary">
+        <div class="container-fluid">
+            <a href="/authors" class="btn btn-secondary">Back</a>
+            <a class="navbar-brand">Authors</a>
+        </div>
+    </nav>
+    <br>
+    <br>
+    <div class="container-book-view">
+        <h2>{{ author.first_name }}</h2>
+        <p>ID: {{ author.id }} </p>
+        <h5>Description:</h5>
+        <p>Hellow</p>
+        <ul>
+        <h5>Authors:</h5>
+            <li>one</li>
+            <li>two</li>
+        </ul>
+    </div>
+
+    <script src="{% static 'js/bootstrap/bootstrap.js' %}" ></script>
+</body>
+</html>
